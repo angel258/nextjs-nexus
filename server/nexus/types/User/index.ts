@@ -144,5 +144,16 @@ export const User = objectType({
     t.string('image', {
       description: 'Avatar',
     })
+
+    t.list.field('Tokens', {
+      type: 'Token',
+      resolve({ id }, _, ctx) {
+        return ctx.prisma.token.findMany({
+          where: {
+            userId: id,
+          },
+        })
+      },
+    })
   },
 })

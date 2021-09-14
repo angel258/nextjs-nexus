@@ -358,6 +358,13 @@ type Query {
   """
   filesCount(where: FileWhereInput): Int!
   me: User
+  tokens(
+    cursor: TokenWhereUniqueInput
+    orderBy: [TokenOrderByInput!]
+    skip: Int
+    take: Int
+    where: TokenWhereInput
+  ): [Token!]!
 
   """
   Пользователь
@@ -476,10 +483,25 @@ input StringNullableFilter {
   startsWith: String
 }
 
+type Token {
+  User: User
+  createdAt: DateTime!
+  expiredAt: DateTime
+  id: ID!
+  userId: String
+}
+
 input TokenListRelationFilter {
   every: TokenWhereInput
   none: TokenWhereInput
   some: TokenWhereInput
+}
+
+input TokenOrderByInput {
+  createdAt: SortOrder
+  expiredAt: SortOrder
+  id: SortOrder
+  userId: SortOrder
 }
 
 input TokenWhereInput {
@@ -493,6 +515,10 @@ input TokenWhereInput {
   userId: StringNullableFilter
 }
 
+input TokenWhereUniqueInput {
+  id: String
+}
+
 """
 desc
 """
@@ -502,6 +528,8 @@ scalar Upload
 Пользователь
 """
 type User {
+  Tokens: [Token]
+
   """
   Когда создан
   """

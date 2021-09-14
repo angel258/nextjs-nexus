@@ -345,6 +345,7 @@ export interface Query {
   /** Количество файлов */
   filesCount: Scalars['Int'];
   me?: Maybe<User>;
+  tokens: Array<Token>;
   /** Пользователь */
   user?: Maybe<User>;
   /** Список пользователей */
@@ -370,6 +371,15 @@ export type QueryFilesArgs = {
 
 export type QueryFilesCountArgs = {
   where?: Maybe<FileWhereInput>;
+};
+
+
+export type QueryTokensArgs = {
+  cursor?: Maybe<TokenWhereUniqueInput>;
+  orderBy?: Maybe<Array<TokenOrderByInput>>;
+  skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
+  where?: Maybe<TokenWhereInput>;
 };
 
 
@@ -482,10 +492,26 @@ export interface StringNullableFilter {
   startsWith?: Maybe<Scalars['String']>;
 }
 
+export interface Token {
+  __typename?: 'Token';
+  User?: Maybe<User>;
+  createdAt: Scalars['DateTime'];
+  expiredAt?: Maybe<Scalars['DateTime']>;
+  id: Scalars['ID'];
+  userId?: Maybe<Scalars['String']>;
+}
+
 export interface TokenListRelationFilter {
   every?: Maybe<TokenWhereInput>;
   none?: Maybe<TokenWhereInput>;
   some?: Maybe<TokenWhereInput>;
+}
+
+export interface TokenOrderByInput {
+  createdAt?: Maybe<SortOrder>;
+  expiredAt?: Maybe<SortOrder>;
+  id?: Maybe<SortOrder>;
+  userId?: Maybe<SortOrder>;
 }
 
 export interface TokenWhereInput {
@@ -499,10 +525,15 @@ export interface TokenWhereInput {
   userId?: Maybe<StringNullableFilter>;
 }
 
+export interface TokenWhereUniqueInput {
+  id?: Maybe<Scalars['String']>;
+}
+
 
 /** Пользователь */
 export interface User {
   __typename?: 'User';
+  Tokens?: Maybe<Array<Maybe<Token>>>;
   /** Когда создан */
   createdAt: Scalars['DateTime'];
   email?: Maybe<Scalars['String']>;

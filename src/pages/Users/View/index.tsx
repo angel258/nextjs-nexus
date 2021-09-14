@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { UsersPageViewProps } from './interfaces'
 import { UsersPageViewStyled } from './styles'
+import UikitUserLink from '../../../uikit/Link/User'
 
 export const UsersPageView: React.FC<UsersPageViewProps> = ({ users }) => {
   return (
@@ -9,7 +10,7 @@ export const UsersPageView: React.FC<UsersPageViewProps> = ({ users }) => {
       <table>
         <thead>
           <tr>
-            <th>ID</th>
+            <th></th>
             <th>username</th>
             <th>fullname</th>
           </tr>
@@ -19,7 +20,9 @@ export const UsersPageView: React.FC<UsersPageViewProps> = ({ users }) => {
             return (
               <tr key={user.id}>
                 <td>
-                  <Link href={`/users/${user.id}`}>{user.id}</Link>
+                  <Link href={`/users/${user.id}`}>
+                    <UikitUserLink user={user} size="small" />
+                  </Link>
                 </td>
                 <td>{user.username}</td>
                 <td>{user.fullname}</td>

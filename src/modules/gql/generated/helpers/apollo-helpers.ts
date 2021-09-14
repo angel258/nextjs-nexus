@@ -28,12 +28,13 @@ export type MutationFieldPolicy = {
 	signup?: FieldPolicy<any> | FieldReadFunction<any>,
 	singleUpload?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type QueryKeySpecifier = ('file' | 'files' | 'filesCount' | 'me' | 'user' | 'users' | 'usersCount' | QueryKeySpecifier)[];
+export type QueryKeySpecifier = ('file' | 'files' | 'filesCount' | 'me' | 'tokens' | 'user' | 'users' | 'usersCount' | QueryKeySpecifier)[];
 export type QueryFieldPolicy = {
 	file?: FieldPolicy<any> | FieldReadFunction<any>,
 	files?: FieldPolicy<any> | FieldReadFunction<any>,
 	filesCount?: FieldPolicy<any> | FieldReadFunction<any>,
 	me?: FieldPolicy<any> | FieldReadFunction<any>,
+	tokens?: FieldPolicy<any> | FieldReadFunction<any>,
 	user?: FieldPolicy<any> | FieldReadFunction<any>,
 	users?: FieldPolicy<any> | FieldReadFunction<any>,
 	usersCount?: FieldPolicy<any> | FieldReadFunction<any>
@@ -55,8 +56,17 @@ export type ResetPasswordResponseFieldPolicy = {
 	message?: FieldPolicy<any> | FieldReadFunction<any>,
 	success?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type UserKeySpecifier = ('createdAt' | 'email' | 'fullname' | 'id' | 'image' | 'showEmail' | 'showFullname' | 'sudo' | 'updatedAt' | 'username' | UserKeySpecifier)[];
+export type TokenKeySpecifier = ('User' | 'createdAt' | 'expiredAt' | 'id' | 'userId' | TokenKeySpecifier)[];
+export type TokenFieldPolicy = {
+	User?: FieldPolicy<any> | FieldReadFunction<any>,
+	createdAt?: FieldPolicy<any> | FieldReadFunction<any>,
+	expiredAt?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	userId?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type UserKeySpecifier = ('Tokens' | 'createdAt' | 'email' | 'fullname' | 'id' | 'image' | 'showEmail' | 'showFullname' | 'sudo' | 'updatedAt' | 'username' | UserKeySpecifier)[];
 export type UserFieldPolicy = {
+	Tokens?: FieldPolicy<any> | FieldReadFunction<any>,
 	createdAt?: FieldPolicy<any> | FieldReadFunction<any>,
 	email?: FieldPolicy<any> | FieldReadFunction<any>,
 	fullname?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -96,6 +106,10 @@ export type TypedTypePolicies = TypePolicies & {
 	ResetPasswordResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | ResetPasswordResponseKeySpecifier | (() => undefined | ResetPasswordResponseKeySpecifier),
 		fields?: ResetPasswordResponseFieldPolicy,
+	},
+	Token?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TokenKeySpecifier | (() => undefined | TokenKeySpecifier),
+		fields?: TokenFieldPolicy,
 	},
 	User?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | UserKeySpecifier | (() => undefined | UserKeySpecifier),
