@@ -6,6 +6,7 @@ export const MainMenuStyled = styled.nav`
   padding: 5px 10px;
 
   > * {
+    display: block;
     margin: 0 5px;
   }
 `

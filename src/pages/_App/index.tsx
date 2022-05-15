@@ -67,6 +67,7 @@ const App: MainApp<AppProps> = ({ Component, pageProps }) => {
     return {
       user,
       onAuthSuccess,
+      hello: 'Hello!',
     }
   }, [user, onAuthSuccess])
 
@@ -101,6 +102,7 @@ const App: MainApp<AppProps> = ({ Component, pageProps }) => {
     return (
       <>
         <NextSeo {...meta} />
+        <MainMenu />
         {content}
       </>
     )
@@ -117,7 +119,6 @@ const App: MainApp<AppProps> = ({ Component, pageProps }) => {
                 client: apolloClient,
               }}
             >
-              <MainMenu />
               {content}
             </PrismaContext.Provider>
           </ApolloProvider>

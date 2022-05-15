@@ -4,7 +4,7 @@
  */
 
 import type { PrismaContext } from './../context/index'
-import type { User, File, ResetPassword } from '@prisma/client'
+import type { User, File, ResetPassword, Token } from '@prisma/client'
 import type { core } from 'nexus'
 declare global {
   interface NexusGenCustomInputMethods<TypeName extends string> {
@@ -359,6 +359,13 @@ export interface NexusGenInputs {
     none?: NexusGenInputs['TokenWhereInput'] | null // TokenWhereInput
     some?: NexusGenInputs['TokenWhereInput'] | null // TokenWhereInput
   }
+  TokenOrderByInput: {
+    // input type
+    createdAt?: NexusGenEnums['SortOrder'] | null // SortOrder
+    expiredAt?: NexusGenEnums['SortOrder'] | null // SortOrder
+    id?: NexusGenEnums['SortOrder'] | null // SortOrder
+    userId?: NexusGenEnums['SortOrder'] | null // SortOrder
+  }
   TokenWhereInput: {
     // input type
     AND?: NexusGenInputs['TokenWhereInput'][] | null // [TokenWhereInput!]
@@ -369,6 +376,10 @@ export interface NexusGenInputs {
     expiredAt?: NexusGenInputs['DateTimeNullableFilter'] | null // DateTimeNullableFilter
     id?: NexusGenInputs['StringFilter'] | null // StringFilter
     userId?: NexusGenInputs['StringNullableFilter'] | null // StringNullableFilter
+  }
+  TokenWhereUniqueInput: {
+    // input type
+    id?: string | null // String
   }
   UserOrderByInput: {
     // input type
@@ -476,6 +487,7 @@ export interface NexusGenObjects {
     message: string // String!
     success: boolean // Boolean!
   }
+  Token: Token
   User: User
 }
 
@@ -529,6 +541,7 @@ export interface NexusGenFieldTypes {
     files: NexusGenRootTypes['File'][] // [File!]!
     filesCount: number // Int!
     me: NexusGenRootTypes['User'] | null // User
+    tokens: NexusGenRootTypes['Token'][] // [Token!]!
     user: NexusGenRootTypes['User'] | null // User
     users: NexusGenRootTypes['User'][] // [User!]!
     usersCount: number // Int!
@@ -549,6 +562,14 @@ export interface NexusGenFieldTypes {
     errors: NexusGenRootTypes['RequestError'][] // [RequestError!]!
     message: string // String!
     success: boolean // Boolean!
+  }
+  Token: {
+    // field return type
+    User: NexusGenRootTypes['User'] | null // User
+    createdAt: NexusGenScalars['DateTime'] // DateTime!
+    expiredAt: NexusGenScalars['DateTime'] | null // DateTime
+    id: string // ID!
+    userId: string | null // String
   }
   User: {
     // field return type
@@ -607,6 +628,7 @@ export interface NexusGenFieldTypeNames {
     files: 'File'
     filesCount: 'Int'
     me: 'User'
+    tokens: 'Token'
     user: 'User'
     users: 'User'
     usersCount: 'Int'
@@ -627,6 +649,14 @@ export interface NexusGenFieldTypeNames {
     errors: 'RequestError'
     message: 'String'
     success: 'Boolean'
+  }
+  Token: {
+    // field return type name
+    User: 'User'
+    createdAt: 'DateTime'
+    expiredAt: 'DateTime'
+    id: 'ID'
+    userId: 'String'
   }
   User: {
     // field return type name
@@ -703,6 +733,14 @@ export interface NexusGenArgTypes {
     filesCount: {
       // args
       where?: NexusGenInputs['FileWhereInput'] | null // FileWhereInput
+    }
+    tokens: {
+      // args
+      cursor?: NexusGenInputs['TokenWhereUniqueInput'] | null // TokenWhereUniqueInput
+      orderBy?: NexusGenInputs['TokenOrderByInput'][] | null // [TokenOrderByInput!]
+      skip?: number | null // Int
+      take?: number | null // Int
+      where?: NexusGenInputs['TokenWhereInput'] | null // TokenWhereInput
     }
     user: {
       // args

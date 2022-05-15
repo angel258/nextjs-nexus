@@ -11,4 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
 
+  .separator {
+    flex: 1;
+  }
 `
