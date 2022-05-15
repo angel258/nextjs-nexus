@@ -11,6 +11,8 @@ export type ContextValue = {
   onAuthSuccess: (
     data: SignupMutation['signup'] | SigninMutation['signin']
   ) => void
+
+  hello: string
 }
 
 export const Context = React.createContext<ContextValue | null>(null)

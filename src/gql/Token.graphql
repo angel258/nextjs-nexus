@@ -1,0 +1,11 @@
+query tokens($take: Int, $where: TokenWhereInput) {
+  tokens(take: $take, where: $where) {
+    id
+    createdAt
+    expiredAt
+    userId
+    User {
+      ...user
+    }
+  }
+}

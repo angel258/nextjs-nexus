@@ -22,6 +22,7 @@ import ErrorPage from '../_Error'
 import { GlobalStyle } from 'src/theme/GlobalStyle'
 import { Context, ContextValue } from './Context'
 import { useMeQuery } from 'src/modules/gql/generated'
+import { MainMenu } from './MainMenu'
 
 const withWs = false
 
@@ -66,6 +67,7 @@ const App: MainApp<AppProps> = ({ Component, pageProps }) => {
     return {
       user,
       onAuthSuccess,
+      hello: 'Hello!',
     }
   }, [user, onAuthSuccess])
 
@@ -100,6 +102,7 @@ const App: MainApp<AppProps> = ({ Component, pageProps }) => {
     return (
       <>
         <NextSeo {...meta} />
+        <MainMenu />
         {content}
       </>
     )
