@@ -1,8 +1,7 @@
+import React, { useContext } from 'react'
 import Link from 'next/link'
-import React from 'react'
-import { useContext } from 'react'
-import { Context } from '../Context'
 import { MainMenuStyled } from './styles'
+import { Context } from '../Context'
 
 export const MainMenu: React.FC = () => {
   const context = useContext(Context)
@@ -13,15 +12,12 @@ export const MainMenu: React.FC = () => {
     <Link href="/signin">SignIn</Link>
   )
 
-  // let user: JSX.Element | undefined
-
-  // if(context?.user) {
-  //   user = <div>{context.user.fullname || context.user.username || 'NoName'}</div>
-  // }
-
   return (
     <MainMenuStyled>
-      <Link href="/">MainPage</Link>
+      <Link href="/">Главная</Link>
+      <Link href="/react-hooks">Хуки</Link>
+      <Link href="/events/react-events">Реактовые события</Link>
+      <Link href="/events/native-events">Нативные события</Link>
       <Link href="/lessons">Lessons</Link>
       <Link href="/lessons/lesson1">
         <a title="Создание страниц">Lesson1</a>
