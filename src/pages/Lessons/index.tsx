@@ -22,6 +22,9 @@ export const Lessons: Page = () => {
         <li>
           <Link href="/lessons/lesson4">Lesson4</Link>. Все можно редактировать!
         </li>
+        <li>
+          <Link href="/lessons/lesson5">Lesson5</Link>. Пятнашки
+        </li>
       </ul>
     </>
   )
