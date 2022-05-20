@@ -18,6 +18,7 @@ export const MainMenu: React.FC = () => {
       <Link href="/react-hooks">Хуки</Link>
       <Link href="/events/react-events">Реактовые события</Link>
       <Link href="/events/native-events">Нативные события</Link>
+      <Link href="/lifecycle">Жизненный цикл</Link>
       <Link href="/lessons">Lessons</Link>
       <div className="separator" />
 
