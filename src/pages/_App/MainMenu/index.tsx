@@ -18,12 +18,8 @@ export const MainMenu: React.FC = () => {
       <Link href="/react-hooks">Хуки</Link>
       <Link href="/events/react-events">Реактовые события</Link>
       <Link href="/events/native-events">Нативные события</Link>
+      <Link href="/lifecycle">Жизненный цикл</Link>
       <Link href="/lessons">Lessons</Link>
-      <Link href="/lessons/lesson1">
-        <a title="Создание страниц">Lesson1</a>
-      </Link>
-      <Link href="/lessons/lesson2">Lesson2</Link>
-      <Link href="/lessons/lesson3">Lesson3</Link>
       <div className="separator" />
 
       {context?.hello || ''}
